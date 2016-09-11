@@ -1,0 +1,12 @@
+.h1 {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.loader {
+    -fx-background-color: #028aff;
+}
+
+.updater {
+    -fx-background-color: linear-gradient(#05c566, #07ff94);
+}
