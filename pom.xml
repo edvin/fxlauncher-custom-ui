@@ -6,7 +6,7 @@
 
     <groupId>no.tornado</groupId>
     <artifactId>fxlauncher-custom-ui</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>Custom UI Example for FXLauncher</name>
     <description>Demo of how to create a custom look for the FXLauncher loading and updating screens</description>
@@ -15,8 +15,8 @@
         <dependency>
             <groupId>no.tornado</groupId>
             <artifactId>fxlauncher</artifactId>
-            <version>1.0.13-SNAPSHOT</version>
-            <!--<scope>provided</scope>-->
+            <version>1.0.13</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
