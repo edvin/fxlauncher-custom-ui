@@ -1,7 +1,7 @@
 ### Custom FXLauncher Update UI
 
 This example project shows you how you can customize the look and feel of the
-FXLauncher update user interface.
+FXLauncher user interface.
 
 It is recommended that you create a separate project for the custom UI to make it
 easier to embed it into the `fxlauncher.jar`. Basically you implement [UIProvider](https://github.com/edvin/fxlauncher/blob/master/src/main/java/fxlauncher/UIProvider.java)
