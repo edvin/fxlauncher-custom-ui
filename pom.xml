@@ -7,6 +7,18 @@
     <groupId>no.tornado</groupId>
     <artifactId>fxlauncher-custom-ui</artifactId>
     <version>1.0.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <packaging>jar</packaging>
     <name>Custom UI Example for FXLauncher</name>
     <description>Demo of how to create a custom look for the FXLauncher loading and updating screens</description>
@@ -16,7 +28,6 @@
             <groupId>no.tornado</groupId>
             <artifactId>fxlauncher</artifactId>
             <version>1.0.13</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 

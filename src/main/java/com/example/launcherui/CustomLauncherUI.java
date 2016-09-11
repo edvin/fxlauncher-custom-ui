@@ -11,12 +11,17 @@ import javafx.stage.Stage;
 
 public class CustomLauncherUI implements UIProvider {
 	private ProgressBar progressBar;
+	private Stage stage;
 
-	public Parent createLoader(Stage stage) {
+	public void init(Stage stage) {
+		this.stage = stage;
+		stage.getScene().getStylesheets().add(getClass().getResource("/launcherstyles.css").toExternalForm());
+	}
+
+	public Parent createLoader() {
 		stage.setTitle("Acme Inc");
 
 		VBox root = new VBox(10);
-		root.getStylesheets().add(getClass().getResource("/launcherstyles.css").toExternalForm());
 		root.getStyleClass().add("loader");
 		root.setPadding(new Insets(20));
 
@@ -30,9 +35,10 @@ public class CustomLauncherUI implements UIProvider {
 		return root;
 	}
 
-	public Parent createUpdater(Stage stage, FXManifest manifest) {
+	public Parent createUpdater(FXManifest manifest) {
+		stage.setTitle("Updating...");
+
 		VBox root = new VBox(10);
-		root.getStylesheets().add(getClass().getResource("/launcherstyles.css").toExternalForm());
 		root.setPadding(new Insets(20));
 		root.getStyleClass().add("updater");
 
