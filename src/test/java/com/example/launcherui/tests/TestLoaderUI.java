@@ -7,17 +7,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class TestLoadingUI extends Application {
-	public void start(Stage primaryStage) throws Exception {
+public class TestLoaderUI extends Application {
+	public void start(Stage stage) throws Exception {
 		StackPane root = new StackPane();
-		primaryStage.setScene(new Scene(root));
+		stage.setScene(new Scene(root));
 
 		CustomLauncherUI ui = new CustomLauncherUI();
-		ui.init(primaryStage);
+		ui.init(stage);
 
 		Parent updater = ui.createLoader();
 		root.getChildren().addAll(updater);
 
-		primaryStage.show();
+		stage.show();
 	}
 }

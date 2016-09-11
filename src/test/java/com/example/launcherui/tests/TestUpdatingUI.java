@@ -9,16 +9,18 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class TestUpdatingUI extends Application {
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage stage) throws Exception {
 		StackPane root = new StackPane();
-		primaryStage.setScene(new Scene(root));
+		stage.setScene(new Scene(root));
 
 		CustomLauncherUI ui = new CustomLauncherUI();
-		ui.init(primaryStage);
+		ui.init(stage);
+
+		ui.createLoader();
 
 		Parent updater = ui.createUpdater(new FXManifest());
 		root.getChildren().addAll(updater);
 
-		primaryStage.show();
+		stage.show();
 	}
 }

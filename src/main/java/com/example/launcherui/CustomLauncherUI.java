@@ -2,16 +2,24 @@ package com.example.launcherui;
 
 import fxlauncher.FXManifest;
 import fxlauncher.UIProvider;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class CustomLauncherUI implements UIProvider {
 	private ProgressBar progressBar;
 	private Stage stage;
+	private VBox root;
+	private Label label;
+	private Label header;
 
 	public void init(Stage stage) {
 		this.stage = stage;
@@ -21,16 +29,17 @@ public class CustomLauncherUI implements UIProvider {
 	public Parent createLoader() {
 		stage.setTitle("Acme Inc");
 
-		VBox root = new VBox(10);
-		root.getStyleClass().add("loader");
-		root.setPadding(new Insets(20));
+		root = new VBox(30);
+		root.setAlignment(Pos.CENTER);
+		root.setPrefSize(300, 500);
+		root.getStyleClass().add("updater");
 
-		Label booting = new Label("Starting Up");
-		booting.getStyleClass().add("h1");
+		header = new Label("MyApp");
+		header.getStyleClass().add("h1");
 
-		Label wait = new Label("Please wait...");
+		label = new Label("Please wait...");
 
-		root.getChildren().addAll(booting, wait);
+		root.getChildren().addAll(header, label);
 
 		return root;
 	}
@@ -38,17 +47,16 @@ public class CustomLauncherUI implements UIProvider {
 	public Parent createUpdater(FXManifest manifest) {
 		stage.setTitle("Updating...");
 
-		VBox root = new VBox(10);
-		root.setPadding(new Insets(20));
-		root.getStyleClass().add("updater");
-
-		Label title = new Label(manifest.updateText);
-		title.getStyleClass().add("h1");
-
 		progressBar = new ProgressBar();
 
-		root.getChildren().addAll(title, progressBar);
+		Timeline tl = new Timeline(
+			new KeyFrame(Duration.seconds(4), new KeyValue(header.scaleXProperty(), 1.5)),
+			new KeyFrame(Duration.seconds(4), new KeyValue(header.scaleYProperty(), 1.5))
+		);
+		tl.play();
 
+		root.getChildren().remove(label);
+		root.getChildren().add(progressBar);
 
 		return root;
 	}

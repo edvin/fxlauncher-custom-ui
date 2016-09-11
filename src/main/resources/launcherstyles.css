@@ -1,12 +1,20 @@
-.h1 {
+.updater .label {
+    -fx-text-fill: white;
     -fx-font-size: 22px;
     -fx-font-weight: bold;
+    -fx-font-family: Tahoma;
 }
 
-.loader {
-    -fx-background-color: #028aff;
+.updater .h1 {
+    -fx-font-size: 55px;
 }
 
 .updater {
-    -fx-background-color: linear-gradient(#05c566, #07ff94);
+    -fx-background-color: linear-gradient(#028aff, #003780);
+    -fx-padding: 20px;
 }
+
+.updater .progress-bar {
+    -fx-pref-width: 300px;
+}
+
