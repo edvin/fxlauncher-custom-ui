@@ -5,7 +5,6 @@ import fxlauncher.UIProvider;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -49,14 +48,14 @@ public class CustomLauncherUI implements UIProvider {
 
 		progressBar = new ProgressBar();
 
+		root.getChildren().remove(label);
+		root.getChildren().add(progressBar);
+
 		Timeline tl = new Timeline(
 			new KeyFrame(Duration.seconds(4), new KeyValue(header.scaleXProperty(), 1.5)),
 			new KeyFrame(Duration.seconds(4), new KeyValue(header.scaleYProperty(), 1.5))
 		);
 		tl.play();
-
-		root.getChildren().remove(label);
-		root.getChildren().add(progressBar);
 
 		return root;
 	}
