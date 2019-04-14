@@ -3,12 +3,14 @@
 This example project shows you how you can customize the look and feel of the
 FXLauncher user interface.
 
+Here's a [video with a fuller explanation](https://www.youtube.com/watch?v=-6PlFVUgntU).
+
 It is recommended that you create a separate project for the custom UI to make it
 easier to embed it into the `fxlauncher.jar`. Basically you implement [UIProvider](https://github.com/edvin/fxlauncher/blob/master/src/main/java/fxlauncher/UIProvider.java)
 and add the `META-INF/services/fxlauncher.UIProvider` file, pointing to your implementation. See the
 documentation of `UIProvider` on the previous link.
 
-To embed custom UI, include a step in your app project where you basically
+To embed the custom UI, include a step in your app project where you basically
 embed all the class files from the ui project into the `fxlauncher.jar`:
 
 ```xml
@@ -28,13 +30,20 @@ embed all the class files from the ui project into the `fxlauncher.jar`:
                         <goal>exec</goal>
                     </goals>
                     <configuration>
-                        <executable>jar</executable>
+                        <!-- Here, `jar` refers to an executable that you can run on 
+                        the command line to create a jar file. -->
+                        <executable>jar</executable> 
                         <workingDirectory>${app.dir}</workingDirectory>
                         <arguments>
+                            <!-- The `u` argument means "update existing archive". Run `jar -h`for more info. -->
+                            <!-- The `f` argument means "specify archive file name". Run `jar -h`for more info. -->
                             <argument>uf</argument>
                             <argument>fxlauncher.jar</argument>
+                            <!-- The `-C` argument means "change to the specified directory and include 
+                            the following files". Run `jar -h`for more info. -->
                             <argument>-C</argument>
                             <argument>${project.basedir}/../fxlauncher-custom-ui/target/classes</argument>
+                            <!-- `.` means all the files in the directory. -->
                             <argument>.</argument>
                         </arguments>
                     </configuration>
